@@ -50,3 +50,11 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'devise'
 gem 'foundation-rails'
+gem 'kaminari', '~> 0.16.1'
+gem 'pry-rails', group: [:development, :test]
+gem 'rails_12factor', group: :production
+gem "carrierwave"
+gem "fog"
+gem "dotenv-rails"
+gem "poltergeist", group: [:development, :test]
+gem 'database_cleaner', group: [:development, :test]
