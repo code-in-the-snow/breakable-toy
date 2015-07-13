@@ -5,6 +5,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
+    handle "fluffy"
   end
 
   factory :question do
@@ -16,4 +17,9 @@ FactoryGirl.define do
     option_d "date"
   end
 
+  factory :quiz do
+    count_questions_asked 9
+    count_right_answers 7
+    user
+  end
 end

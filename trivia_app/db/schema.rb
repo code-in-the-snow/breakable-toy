@@ -11,10 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713180433) do
+ActiveRecord::Schema.define(version: 20150713215224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "question_sets", force: :cascade do |t|
+    t.integer "quiz_id",     null: false
+    t.integer "question_id", null: false
+  end
 
   create_table "questions", force: :cascade do |t|
     t.string "body",     null: false
@@ -23,6 +28,14 @@ ActiveRecord::Schema.define(version: 20150713180433) do
     t.string "option_b", null: false
     t.string "option_c", null: false
     t.string "option_d", null: false
+  end
+
+  create_table "quizzes", force: :cascade do |t|
+    t.integer  "count_questions_asked", default: 0
+    t.integer  "count_right_answers",   default: 0
+    t.integer  "user_id",                           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,7 +51,7 @@ ActiveRecord::Schema.define(version: 20150713180433) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "alias",                  default: "", null: false
+    t.string   "handle",                 default: "", null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
