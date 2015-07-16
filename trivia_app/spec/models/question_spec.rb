@@ -10,11 +10,10 @@ RSpec.describe Question, type: :model do
     it "stores the correct answer" do
       expect(q.answer).to eq "coconut"
     end
-    it "stores four possible answers" do
-      expect(q.option_a).to eq "apple"
-      expect(q.option_b).to eq "banana"
-      expect(q.option_c).to eq "coconut"
-      expect(q.option_d).to eq "date"
+    it "stores three false answer choices" do
+      expect(q.options[0]).to eq "apple"
+      expect(q.options[1]).to eq "banana"
+      expect(q.options[2]).to eq "date"
     end
   end
 end

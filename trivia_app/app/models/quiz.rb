@@ -10,4 +10,8 @@ class Quiz < ActiveRecord::Base
   def count_wrong_answers
     count_questions_asked - count_right_answers
   end
+
+  def percent_right
+    count_right_answers / 20
+  end
 end
