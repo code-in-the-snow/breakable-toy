@@ -57,4 +57,3 @@ gem "carrierwave"
 gem "fog"
 gem "dotenv-rails"
 gem "poltergeist", group: [:development, :test]
-gem 'database_cleaner', group: [:development, :test]

@@ -15,9 +15,4 @@
  *= require foundation_and_overrides
 
  */
- body {
-   /* background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYuPx0cYi2Uqzz0gXgogXVEifyHJ7Mkpvq3pjYSFeGvHRkGRcZuA */
-   background-image: url("app/assets/images/collage.jpg");
-   background-size: cover;
-   background-attachment: fixed
- }
+ 
