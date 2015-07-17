@@ -5,7 +5,7 @@ RSpec.describe Quiz, type: :model do
 
   describe '#initialize' do
     it "returns number of wrong answers" do
-      expect(z.count_wrong_answers).to eq(2)
+      expect(z.count_wrong_answers).to eq(1)
     end
   end
 end

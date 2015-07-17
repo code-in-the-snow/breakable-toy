@@ -15,8 +15,18 @@ FactoryGirl.define do
   end
 
   factory :quiz do
-    count_questions_asked 9
-    count_right_answers 7
+    count_questions_asked 4
+    count_right_answers 3
     user
   end
+
+  factory :question_set do
+    question
+    question
+    question
+    question
+    question
+  end
+
+
 end

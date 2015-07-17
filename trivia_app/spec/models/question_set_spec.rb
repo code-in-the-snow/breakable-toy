@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Question, type: :model do
+RSpec.describe Question_set, type: :model do
   let(:q) { FactoryGirl.create(:question) }
 
   describe '#initialize' do
-    it "stores the correct answer" do
+    it "returns 5 questions from Questions.all" do
       expect(q.answer).to eq "coconut"
     end
 
-    it "adds correct answer to options array" do
+    it "shuffles questions from Questions.all" do
       expect(q.all_options).to include("apple")
       expect(q.all_options).to include("banana")
       expect(q.all_options).to include("coconut")
