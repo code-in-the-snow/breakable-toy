@@ -14,18 +14,7 @@ FactoryGirl.define do
     options [ "apple", "banana", "date" ]
   end
 
-  factory :quiz do
-    count_questions_asked 4
-    count_right_answers 3
-    user
-  end
-
-  factory :question_set do
-    question
-    question
-    question
-    question
-    question
+  factory :user_question do
   end
 
 
