@@ -5,8 +5,13 @@ class Question < ActiveRecord::Base
   validates :answer, presence: true
   validates  :options, presence: true
 
-  def next
-    result = (Questions.all - UserQuestions.all).shuffle!
-    result.pop
+  def self.next
+    result = (Question.all - UserQuestion.all)
+    result.sample
+  end
+
+  def answers
+    array = options << answer
+    array.shuffle!
   end
 end
