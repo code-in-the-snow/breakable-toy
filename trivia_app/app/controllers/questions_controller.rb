@@ -8,8 +8,8 @@ class QuestionsController < ApplicationController
     @quizzes = @user.quizzes
   end
 
-  protected
-  def user_params
-    params.require(:user).permit(:email, :password, :handle)
-  end
+  # protected
+  # def user_params
+  #   params.require(:user).permit(:email, :password, :handle)
+  # end
 end

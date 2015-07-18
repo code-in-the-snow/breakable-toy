@@ -4,7 +4,7 @@
     <div class="large-12">
       <h1>Past Quizzes</h1>
 
-      <%- if !@quizzes.empty? -%>
+      <%- if !@user_questions.empty? -%>
         <table>
           <tr>
             <th>Date Taken</th>
@@ -13,7 +13,7 @@
             <th></th>
           </tr>
 
-          <%- @quizzes.each do |quiz| -%>
+          <%- @user_questions.each do |quiz| -%>
             <tr>
               <td><%= quiz.created_at %></td>
               <td><%= quiz.count_right_answers %></td>
@@ -23,7 +23,8 @@
         </table>
 
       <%- end -%>
-      <p><%= link_to 'Start New Quiz', question_path, method: :get %> |
+      <p><%= link_to 'Start New Quiz', new_user_user_question_path(@user),
+             method: :get %> |
       <%= link_to 'Submit A Question', root_path, method: :get %> |
       <%= link_to 'Home', root_path, method: :get %>
       </p>
