@@ -1,5 +1,9 @@
 <div class="large-12">
-    <h3><%= @question.body %></h3>
+
+  <h3><%= @question.body %></h3>
+
+  <div id="this-question" value="<% @question.id %>" ></div>
+  <div id="correct-answer" value="<% @question.answer%>" ></div>
 
   <form>
     <input type="radio" name="answer-choice" value="<% @answers[0] %>"><%= @answers[0] %>

@@ -8,19 +8,29 @@ class UserQuestionsController < ApplicationController
 
   def new
     # @user = current_user
-    @user = User.find(params[:user_id])
-    @question = Question.next
-    @answers = @question.answers
+    sessions[:count] = 0
+    sessions[:correct] = 0
+    while sessions[:count] = 0
+      @user = User.find(params[:user_id])
+      @question = Question.next
+      @answers = @question.answers
 
-    @user_question = UserQuestion.new
+      @user_question = UserQuestion.new
+      sessions[:count] += 1
+  end
   end
 
   def create
     @user = User.find(params[:user_id])
     @question = Question.next
-    @user_question = UserQuestion.new(user_question_params)
     @user_question.user = @user
     @user_question.question = @question
+    if params[:input] == @question.answer
+      @user_question.correct?
+    else
+      !@user_question.correct?
+    end
+    @user_question = UserQuestion.new(user_question_params)
 
     if @user_question.save
       redirect_to new_user_user_question_path(@user)
