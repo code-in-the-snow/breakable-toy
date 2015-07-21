@@ -3,9 +3,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = Question.first
-    @user = User.find(params[:id])
-    @quizzes = @user.quizzes
   end
 
   # protected

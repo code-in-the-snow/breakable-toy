@@ -2,18 +2,20 @@
 
   <h3><%= @question.body %></h3>
 
-  <div id="this-question" value="<% @question.id %>" ></div>
   <div id="correct-answer" value="<% @question.answer%>" ></div>
 
-  <form>
-    <input type="radio" name="answer-choice" value="<% @answers[0] %>"><%= @answers[0] %>
-    <br>
-    <input type="radio" name="answer-choice" value="<% @answers[1] %>"><%= @answers[1] %>
-    <br>
-    <input type="radio" name="answer-choice" value="<% @answers[2] %>"><%= @answers[2] %>
-    <br>
-    <input type="radio" name="answer-choice" value="<% @answers[3] %>"><%= @answers[3] %>
-    <br>
-    <input type="submit" value="Submit">
-  </form>
+<%= form_tag "/users/#{@user.id}/user_questions" do %>
+
+  <%= radio_button_tag :response, @answers[0] %>
+  <%= label_tag :response_zero, @answers[0] %><br>
+  <%= radio_button_tag :response, @answers[1] %>
+  <%= label_tag :response_one, @answers[1] %><br>
+  <%= radio_button_tag :response, @answers[2] %>
+  <%= label_tag :response_two, @answers[2] %><br>
+  <%= radio_button_tag :response, @answers[3] %>
+  <%= label_tag :response_three, @answers[3] %><br>
+
+  <%= submit_tag "Submit" %>
+<% end %>
+
 </div>

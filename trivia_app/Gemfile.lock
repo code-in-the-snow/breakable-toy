@@ -343,6 +343,7 @@ DEPENDENCIES
   launchy
   pg
   poltergeist
+  pry
   pry-rails
   rails (= 4.2.3)
   rails_12factor
