@@ -1,4 +1,3 @@
-require 'pry'
 require 'byebug'
 require 'question_grader'
 
@@ -12,15 +11,16 @@ class UserQuestionsController < ApplicationController
   end
 
   def new
-      @user_question = UserQuestion.new
-      @user_question.response = params[:response]
       @user = current_user
+      @user_question = UserQuestion.new
       @question = Question.next
       session[:q] = @question.id
       @answers = @question.answers
+      @user_question.response = params[:response]
   end
 
   def create
+    session[:count] -= 1
     @user = current_user
     @question = Question.find(session[:q])
     @answers = @question.answers
@@ -35,11 +35,25 @@ class UserQuestionsController < ApplicationController
       flash[:notice] = "Wrong!"
     end
 
-    if @user_question.save
-      redirect_to new_user_user_question_path(@user)
+    if session[:count] == 0
+      session[:count] = 5
+      redirect_to user_path(@user)
     else
-      redirect_to '/'
+      redirect_to :back
     end
+
+
+ #    def create
+ #   @response = current_user.responses.build(params[:response])
+ #   if @response.save
+ #      respond_to do |format|
+ #        format.html { redirect_to new_response_path }
+ #        format.js
+ #      end
+ #   else
+ #      render 'new'
+ #   end
+ # end
   end
 
   protected
