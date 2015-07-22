@@ -13,11 +13,11 @@
         <th></th>
       </tr>
 
-      <%- @user_questions.each do |quiz| -%>
+      <%- @user_questions.each do |q| -%>
         <tr>
-          <td><%= quiz.created_at %></td>
-          <td><%= quiz.count_right_answers %></td>
-          <td><%= quiz.percent_right %>%</td>
+          <td><%= q.created_at.strftime("%D") %></td>
+          <td><%= q.correct? %></td>
+          <td><%= q.response %>%</td>
         </tr>
       <%- end -%>
     </table>

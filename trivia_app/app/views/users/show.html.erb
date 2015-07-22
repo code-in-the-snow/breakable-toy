@@ -7,7 +7,7 @@
   <p><%= link_to 'Start New Quiz', new_user_user_question_path(@user),
          method: :get %> |
   <%= link_to 'Submit A Question', root_path, method: :get %> |
-  <%= link_to 'Home', root_path, method: :get %>
+  <%= link_to 'User Home', user_user_questions_path(@user), method: :get %>
   </p>
 </div>
 </div>

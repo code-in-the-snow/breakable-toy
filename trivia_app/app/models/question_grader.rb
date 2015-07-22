@@ -1,5 +1,4 @@
 class QuestionGrader
-  # include ActiveModel::Model
   attr_reader :soul, :query, :selection
 
   def initialize(soul, query, selection)
@@ -17,7 +16,6 @@ class QuestionGrader
   end
 
   def attributes
-    "(correct?: #{grade}, user_id: #{soul.id}, question_id: #{query.id},
-      response: '#{selection}')"
+    "(correct?: #{grade}, user_id: #{soul.id}, question_id: #{query.id}, response: '#{selection}')"
   end
 end

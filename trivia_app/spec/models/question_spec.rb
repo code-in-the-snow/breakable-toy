@@ -9,10 +9,10 @@ RSpec.describe Question, type: :model do
     end
 
     it "adds correct answer to options array" do
-      expect(q.all_options).to include("apple")
-      expect(q.all_options).to include("banana")
-      expect(q.all_options).to include("coconut")
-      expect(q.all_options).to include("date")
+      expect(q.answers).to include("apple")
+      expect(q.answers).to include("banana")
+      expect(q.answers).to include("coconut")
+      expect(q.answers).to include("date")
     end
   end
 end

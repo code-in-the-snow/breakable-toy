@@ -34,7 +34,7 @@ feature 'user starts a quiz', '''
   scenario 'signed in user starts quiz' do
     user = FactoryGirl.create(:user)
 
-    visit user_path
+    visit new_user_user_question_path(user)
 
     click_button 'Start Quiz'
 
