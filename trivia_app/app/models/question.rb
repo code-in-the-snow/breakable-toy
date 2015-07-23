@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Question < ActiveRecord::Base
   has_many :user_questions
 
@@ -6,8 +8,9 @@ class Question < ActiveRecord::Base
   validates  :options, presence: true
 
   def self.next
-    result = (Question.all - UserQuestion.all)
+    result = (Question.all.to_a - UserQuestion.all.to_a)
     result.sample
+    byebug
   end
 
   def answers

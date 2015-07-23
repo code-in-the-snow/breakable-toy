@@ -14,7 +14,11 @@ FactoryGirl.define do
     options [ "apple", "banana", "date" ]
   end
 
-  factory :question_grader do
+  factory :user_question do
+    user
+    question
+    correct? 
+    response
     sequence(:response) { |n| "#{n}" }
     answer "1"
   end

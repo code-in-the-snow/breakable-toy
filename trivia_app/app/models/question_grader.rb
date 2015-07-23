@@ -16,6 +16,11 @@ class QuestionGrader
   end
 
   def attributes
-    "(correct?: #{grade}, user_id: #{soul.id}, question_id: #{query.id}, response: '#{selection}')"
+    attrs = Hash.new
+    attrs[:correct?] = grade
+    attrs[:user_id] = soul.id
+    attrs[:question_id] = query.id
+    attrs[:response] = selection
+    attrs
   end
 end
