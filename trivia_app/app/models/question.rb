@@ -10,7 +10,6 @@ class Question < ActiveRecord::Base
   def self.next
     result = (Question.all.to_a - UserQuestion.all.to_a)
     result.sample
-    byebug
   end
 
   def answers

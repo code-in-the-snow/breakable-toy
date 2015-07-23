@@ -3,8 +3,6 @@
   <h6>Question <%= (session[:count]) %> of 5</h6>
   <h3><%= @question.body %></h3>
 
-  <div id="correct-answer" value="<% @question.answer%>" ></div>
-
 <%= form_tag "/users/#{@user.id}/user_questions" do %>
 
   <%= radio_button_tag :response, @answers[0] %>

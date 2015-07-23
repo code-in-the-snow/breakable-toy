@@ -5,8 +5,4 @@ class QuestionsController < ApplicationController
   def show
   end
 
-  # protected
-  # def user_params
-  #   params.require(:user).permit(:email, :password, :handle)
-  # end
 end

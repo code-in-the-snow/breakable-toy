@@ -21,7 +21,6 @@ class UserQuestionsController < ApplicationController
       @user = current_user
       @user_question = UserQuestion.new
       @question = Question.next
-      byebug
       session[:q] = @question.id
       @answers = @question.answers
       @user_question.response = params[:response]
