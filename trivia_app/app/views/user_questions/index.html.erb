@@ -1,34 +1,33 @@
-<h1><%= @user.handle %></h1>
 
 <div class="row">
-<div class="large-12">
-  <h1>Past Quizzes</h1>
+  <div class="large-12">
+    <h1><%= @user.handle %>: Past Quizzes</h1>
 
-  <%- if (@quizzes.size >= 1) -%>
-    <table>
-      <tr>
-        <th>Date Taken</th>
-        <th>Right Answers</th>
-        <th>Percent Right Answers</th>
-        <th></th>
-      </tr>
-
-      <%- @quizzes.each do |q| -%>
+    <%- if (@quizzes.size >= 1) -%>
+      <table>
         <tr>
-          <td><%= q.date_taken %></td>
-          <td><%= q.right %></td>
-          <td><%= q.percent_right %>%</td>
+          <th>Date Taken</th>
+          <th>Right Answers</th>
+          <th>Percent Right Answers</th>
+          <th></th>
         </tr>
-      <%- end -%>
-    </table>
-    <% else%>
-     <div>Quiz history is empty.</div>
-    <%- end -%>
 
-  <p><%= link_to 'Start New Quiz', new_user_user_question_path(@user),
-         method: :get %> |
-  <%= link_to 'Submit A Question', root_path, method: :get %> |
-  <%= link_to 'Home', root_path, method: :get %>
-  </p>
-</div>
+        <%- @quizzes.each do |q| -%>
+          <tr>
+            <td><%= q.date_taken %></td>
+            <td><%= q.right %></td>
+            <td><%= q.percent_right %>%</td>
+          </tr>
+        <%- end -%>
+      </table>
+      <% else%>
+       <div>Quiz history is empty.</div>
+      <%- end -%>
+
+    <p class="menu"><%= link_to 'Start New Quiz', new_user_user_question_path(@user),
+           method: :get %> |
+    <%= link_to 'Submit A Question', root_path, method: :get %> |
+    <%= link_to 'Home', root_path, method: :get %>
+    </p>
+  </div>
 </div>

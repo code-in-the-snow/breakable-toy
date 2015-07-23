@@ -1,4 +1,4 @@
-require 'byebug'
+require 'json'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -64,4 +64,25 @@ people.each do |people_attrs|
   email, password, handle = people_attrs
   User.create!(email: email, password: password, password_confirmation: password,
   handle: handle)
+end
+
+raw_data = File.read("#{Rails.root}/db/questions.json")
+parsed_data = JSON.parse(raw_data)
+
+def get_answer(q_hash)
+  correct_index = q_hash["q_correct_option"]
+  key_name = "q_options_#{correct_index}"
+  answer = q_hash[key_name]
+end
+
+def make_options_hash(q_hash)
+  [ q_hash["q_options_1"], q_hash["q_options_2"], q_hash["q_options_3"],
+    q_hash["q_options_4"] ] - [ get_answer(q_hash) ]
+end
+
+parsed_data.each do |q_hash|
+  body, answer, options = [ q_hash["q_text"],
+                            get_answer(q_hash),
+                            make_options_hash(q_hash) ]
+  Question.create!(body: body, answer: answer, options: options)
 end
