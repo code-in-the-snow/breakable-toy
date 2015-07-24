@@ -1,12 +1,14 @@
 body {
-  font-family: 'Goudy Old Style';
-  background-image: image-url('collage.png');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  background-attachment: fixed;
   border-style: ridge;
   border-color: #228653;
   border-width: 35px;
+}
+.card {
+  background-attachment: fixed;
+  background-image: image-url('index_card.jpg');
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: 85%;
 }
 
 .menu {

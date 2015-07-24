@@ -7,11 +7,6 @@ class Question < ActiveRecord::Base
   validates :answer, presence: true
   validates  :options, presence: true
 
-  def self.next
-    result = (Question.all.to_a - UserQuestion.all.to_a)
-    result.sample
-  end
-
   def answers
     array = options << answer
     array.shuffle!

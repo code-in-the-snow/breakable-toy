@@ -14,13 +14,16 @@ class UserQuestionsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def new
       @user = current_user
       @user_question = UserQuestion.new
-      @question = Question.next
+
+      check_id = rand(Question.count)
+      while UserQuestion.where(user_id: check_id).exists?
+        check_id = rand(Question.count)
+      end
+      @question = Question.find(check_id)
+
       session[:q] = @question.id
       @answers = @question.answers
       @user_question.response = params[:response]

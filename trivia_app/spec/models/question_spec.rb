@@ -17,10 +17,4 @@ RSpec.describe Question, type: :model do
       expect(q.answers).to include("date")
     end
   end
-
-  describe '#next' do
-    it 'does not repeat a question' do
-    end
-  end
-
 end
