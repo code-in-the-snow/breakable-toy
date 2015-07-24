@@ -10,8 +10,12 @@ body {
   background-repeat: no-repeat;
   background-size: 85%;
 }
-
+.intro {
+  height: 100%;
+  vertical-align: middle;
+}
 .menu {
+  text-align: center;
   position: fixed;
   bottom: 40px;
 }
@@ -27,3 +31,6 @@ body {
 table {
   padding-top: 10px;
 }
+.column.large-centered {
+  text-align: center;
+ }

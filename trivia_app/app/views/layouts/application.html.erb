@@ -12,12 +12,12 @@
       <section class="nav">
         <br>
         <br>
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
-        <li><a href="#">Link 4</a></li>
+        <li><%= link_to "Fun Trivia", "http://www.funtrivia.com" %></li>
+        <li><%= link_to "Trivia Playing", "http://www.triviaplaying.com" %></li>
+        <li><%= link_to "Useful Trivia", "http://wwww.usefultrivia.com" %></li>
+        <li><%= link_to "Trivia Plaza", "http://wwww.triviaplaza.com" %></li>
       </section>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <br><br><br><br><br><br><br><br><br><br>
 
         <%- if current_user -%>
           <li ><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
@@ -28,9 +28,13 @@
       </ul>
     </div>
 
-  <div class="medium-9 push-3 columns">
-        <%= yield %>
-  </div>
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <%= yield %>
+       </div>
+     </div>
+   </div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
