@@ -1,4 +1,7 @@
 body {
+  background-image: image-url('collage.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
   border-style: ridge;
   border-color: #228653;
   border-width: 35px;
@@ -14,19 +17,20 @@ body {
   height: 100%;
   vertical-align: middle;
 }
-.menu {
-  text-align: center;
+.log-links {
   position: fixed;
+  width: 8em;
   bottom: 40px;
 }
 
 .side-nav {
   background-color: #62D99C;
+  text-align: center;
   position: fixed;
   bottom: 35px;
   left: 35px;
   top: 35px;
-  width: 10em;
+  width: 8em;
 }
 table {
   padding-top: 10px;

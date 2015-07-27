@@ -7,23 +7,24 @@
 </head>
 <body>
 
-    <div class="medium-3 columns">
+    <div class="medium-2 columns">
       <ul class="side-nav">
-      <section class="nav">
-        <br>
         <br>
         <li><%= link_to "Fun Trivia", "http://www.funtrivia.com" %></li>
         <li><%= link_to "Trivia Playing", "http://www.triviaplaying.com" %></li>
         <li><%= link_to "Useful Trivia", "http://wwww.usefultrivia.com" %></li>
         <li><%= link_to "Trivia Plaza", "http://wwww.triviaplaza.com" %></li>
-      </section>
-      <br><br><br><br><br><br><br><br><br><br>
 
         <%- if current_user -%>
+        <div class="log-links">
           <li ><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+        </div>
+
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <div class="log-links">
+            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <li><%= link_to 'Sign In', new_user_session_path %></li>
+        </div>
         <%- end -%>
       </ul>
     </div>
