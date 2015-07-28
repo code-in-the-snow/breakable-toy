@@ -33,10 +33,16 @@ feature 'user starts a quiz', '''
 
   scenario 'signed in user starts quiz' do
     user = FactoryGirl.create(:user)
+    5.times do
+      FactoryGirl.create(:question)
+    end
 
-    visit new_user_user_question_path(user)
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Log in'
 
-    click_button 'Start Quiz'
+    click_link 'Start New Quiz'
 
     expect(page).to have_content('Question 1')
   end

@@ -18,7 +18,7 @@ class UserQuestionsController < ApplicationController
       @user = current_user
       @user_question = UserQuestion.new
 
-      check_id = rand(Question.count)
+      check_id = rand(1..Question.count)
       while UserQuestion.where(user_id: check_id).exists?
         check_id = rand(1..Question.count)
       end
