@@ -22,8 +22,10 @@ RSpec.describe QuestionGrader, type: :model do
     it 'returns attribute hash for new user_question' do
       s = FactoryGirl.create(:user)
       q = FactoryGirl.create(:question)
-      g = QuestionGrader.new(s, q, "kiwi")
-      expect(g.attributes).to eq("{:correct?=>#{false}, :user_id=>#{3}, :question_id=>#{3}, :response=>'kiwi'}")
+      g = QuestionGrader.new(s, q, 'kiwi')
+      expect(UserQuestion.new(g.attributes)).to be_a(UserQuestion)
+
+
     end
   end
 end
