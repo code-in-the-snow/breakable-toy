@@ -10,7 +10,7 @@ class UserQuestionsController < ApplicationController
 
     @quizzes = []
     while !array.empty?
-      @quizzes << Quiz.new(array.slice!(0..4))
+      @quizzes << Quiz.new(array.slice!(0..4)        break
     end
   end
 
