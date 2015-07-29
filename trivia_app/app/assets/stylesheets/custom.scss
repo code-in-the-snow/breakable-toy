@@ -7,11 +7,15 @@ body {
   border-width: 35px;
 }
 .card {
+  vertical-align: middle;
   background-attachment: fixed;
   background-image: image-url('index_card.jpg');
-  background-position: bottom;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 85%;
+}
+.flash .flash-notice {
+  float: left;
 }
 .intro {
   height: 100%;
@@ -19,10 +23,16 @@ body {
 }
 .log-links {
   position: fixed;
-  width: 8em;
+  width: 6em;
   bottom: 40px;
 }
+#question-num {
+  font-size: 1em;
+}
 
+#question-body {
+  font-size: 2em;
+}
 .side-nav {
   background-color: #62D99C;
   text-align: center;
@@ -30,7 +40,7 @@ body {
   bottom: 35px;
   left: 35px;
   top: 35px;
-  width: 8em;
+  width: 6em;
 }
 table {
   padding-top: 10px;

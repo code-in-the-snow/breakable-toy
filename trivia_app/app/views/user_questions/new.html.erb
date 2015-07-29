@@ -1,21 +1,23 @@
-<div class="medium-12">
-  <div class="card">
+<div class="row">
+  <div class="medium-8 push-3">
+    <div class="card">
 
-    <h6>Question <%= (session[:count]) %> of 5</h6>
-    <h3><%= @question.body %></h3>
+      <p id="question-num">Question <%= (session[:count]) %> of 5</p>
+      <p id="question-body"><%= @question.body %></p>
 
-    <%= form_tag "/users/#{@user.id}/user_questions" do %>
+      <%= form_tag "/users/#{@user.id}/user_questions" do %>
 
-      <%= radio_button_tag :response, @answers[0] %>
-      <%= label_tag :response_zero, @answers[0] %><br>
-      <%= radio_button_tag :response, @answers[1] %>
-      <%= label_tag :response_one, @answers[1] %><br>
-      <%= radio_button_tag :response, @answers[2] %>
-      <%= label_tag :response_two, @answers[2] %><br>
-      <%= radio_button_tag :response, @answers[3] %>
-      <%= label_tag :response_three, @answers[3] %><br>
+        <%= radio_button_tag :response, @answers[0] %>
+        <%= label_tag :response_zero, @answers[0] %><br>
+        <%= radio_button_tag :response, @answers[1] %>
+        <%= label_tag :response_one, @answers[1] %><br>
+        <%= radio_button_tag :response, @answers[2] %>
+        <%= label_tag :response_two, @answers[2] %><br>
+        <%= radio_button_tag :response, @answers[3] %>
+        <%= label_tag :response_three, @answers[3] %><br>
 
-      <%= submit_tag "Submit" %>
-    <% end %>
+        <%= submit_tag "Submit" %>
+      <% end %>
+    </div>
   </div>
 </div>
