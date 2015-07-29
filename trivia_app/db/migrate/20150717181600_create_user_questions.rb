@@ -1,7 +1,7 @@
 class CreateUserQuestions < ActiveRecord::Migration
   def change
     create_table :user_questions do |t|
-      t.boolean :correct?, null: false
+      t.boolean :correct?, default: false, null: false
       t.integer :user_id, null: false
       t.integer :question_id, null: false
 

@@ -23,11 +23,11 @@ ActiveRecord::Schema.define(version: 20150719213443) do
   end
 
   create_table "user_questions", force: :cascade do |t|
-    t.boolean  "correct?",    null: false
-    t.integer  "user_id",     null: false
-    t.integer  "question_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.boolean  "correct?",    default: false, null: false
+    t.integer  "user_id",                     null: false
+    t.integer  "question_id",                 null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "response"
   end
 

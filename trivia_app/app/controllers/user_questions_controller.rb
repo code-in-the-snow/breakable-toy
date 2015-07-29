@@ -8,9 +8,12 @@ class UserQuestionsController < ApplicationController
     @user_questions = UserQuestion.where(user_id: @user.id)
     array = @user_questions.to_a
 
+    full_quiz = array.size - (array.size % 5)
+    array = array.take(full_quiz)
+
     @quizzes = []
     while !array.empty?
-      @quizzes << Quiz.new(array.slice!(0..4)        break
+      @quizzes << Quiz.new(array.slice!(0..4))
     end
   end
 
