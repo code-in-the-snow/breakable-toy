@@ -38,7 +38,9 @@ class UserQuestionsController < ApplicationController
     @question = Question.find(session[:q])
     @answers = @question.answers
     grader = QuestionGrader.new(@user, @question, params[:response])
+    byebug
     @user_question = UserQuestion.create(grader.attributes)
+
     if grader.grade
       flash[:notice] = "Right-o!"
     else
