@@ -6,6 +6,12 @@ body {
   border-color: #228653;
   border-width: 35px;
 }
+.welcome {
+  margin: 1em 0 1em;
+}
+td {
+  padding: 0;
+}
 .card {
   vertical-align: middle;
   background-attachment: fixed;
@@ -15,7 +21,7 @@ body {
   background-size: 85%;
 }
 .flash .flash-notice {
-  float: left;
+  z-index: 2;
 }
 .intro {
   height: 100%;
