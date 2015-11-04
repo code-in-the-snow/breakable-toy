@@ -23,6 +23,7 @@ class UserQuestionsController < ApplicationController
       @user = current_user
       @user_question = UserQuestion.new
 
+      # pick a random id from all ids in questions table
       check_id = rand(1..Question.count)
       while UserQuestion.where(user_id: check_id).exists?
         check_id = rand(1..Question.count)
@@ -54,7 +55,9 @@ class UserQuestionsController < ApplicationController
     else
       redirect_to :back
     end
+  end
 
+  def delete
   end
 
   protected

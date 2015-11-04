@@ -17,10 +17,10 @@ FactoryGirl.define do
   factory :user_question do
     user
     question
-    correct? 
-    response
-    sequence(:response) { |n| "#{n}" }
-    answer "1"
+    correct? true
+    response "coconut"
+    # sequence(:response) { |n| "#{n}" }
+    # answer "1"
   end
 
 
