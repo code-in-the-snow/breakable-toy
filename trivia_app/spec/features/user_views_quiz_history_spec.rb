@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'byebug'
 
 feature 'user views quiz history', '''
   As a signed in user
@@ -11,23 +12,27 @@ feature 'user views quiz history', '''
 # [ ] I can see a a table of past quizzes
 
     let(:user) { FactoryGirl.create(:user) }
-    before(:all) do
-      5.times do
-        FactoryGirl.create(:user_question)
-      end
+
+
+    scenario 'user has one quiz' do
+
+      user_q1 = FactoryGirl.create(:user_question, user_id: user.id)
+      user_q2 = FactoryGirl.create(:user_question, user_id: user.id)
+      user_q3 = FactoryGirl.create(:user_question, user_id: user.id)
+      user_q4 = FactoryGirl.create(:user_question, user_id: user.id, correct?: false)
+      user_q5 = FactoryGirl.create(:user_question, user_id: user.id, correct?: false)
+
+      visit new_user_session_path
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
+      click_button 'Log in'
+
+      save_and_open_page
+
+      expect(page).to have_content("#{user.handle}")
+      expect(page).to have_content("Past Quizzes")
+
     end
-
-  scenario 'user has answered 5 questions' do
-
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Log in'
-
-    expect(page).to have_content("#{user.handle}")
-    expect(page).to have_content("Past Quizzes")
-
-  end
 
 #   scenario 'user has answered 7 questions' do
 #     user = FactoryGirl.create(:user)
@@ -38,4 +43,5 @@ feature 'user views quiz history', '''
 #     expect(page).to have_content('Question 1')
 #     expect(page).to have_content('Question 1')
 #     expect(page).to have_content('Question 1')
-  end
+#  end
+end

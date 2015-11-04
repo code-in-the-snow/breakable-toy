@@ -15,12 +15,10 @@ FactoryGirl.define do
   end
 
   factory :user_question do
-    user
-    question
+    user_id 1
+    sequence(:question_id) { |n| "#{n}" }
     correct? true
-    response "coconut"
-    # sequence(:response) { |n| "#{n}" }
-    # answer "1"
+    response "pomengranate"
   end
 
 

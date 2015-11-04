@@ -7,14 +7,17 @@ class UserQuestionsController < ApplicationController
     @user = current_user
     # select completed questions for current user from table
     @user_questions = UserQuestion.where(user_id: @user.id)
-    array = @user_questions.to_a  # pg object to ruby array
+    array = @user_questions.to_a
 
+    # 11/04/15  following comments should be in model
+  #   array = @user_questions  # pg object to ruby array
+  #
     full_quiz = array.size - (array.size % 5) # check for stray questions
     # drop questions after last full quiz grouping of five
     array = array.take(full_quiz)
-
+  #
     @quizzes = []
-    while !array.empty?
+    while !array.empty
       @quizzes << Quiz.new(array.slice!(0..4))
     end
   end
