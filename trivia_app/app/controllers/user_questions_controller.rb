@@ -3,22 +3,14 @@ require 'question_grader'
 require 'quiz.rb'
 
 class UserQuestionsController < ApplicationController
-  def index
-    @user = current_user
-    # select completed questions for current user from table
-    @user_questions = UserQuestion.where(user_id: @user.id)
-    array = @user_questions.to_a
 
-    # 11/04/15  following comments should be in model
-  #   array = @user_questions  # pg object to ruby array
-  #
-    full_quiz = array.size - (array.size % 5) # check for stray questions
-    # drop questions after last full quiz grouping of five
-    array = array.take(full_quiz)
-  #
+  before_action :completed_quiz_check, only: [ :index, :destroy ]
+
+  def index
+    user_questions = UserQuestion.where(user_id: @user.id).to_a
     @quizzes = []
-    while !array.empty
-      @quizzes << Quiz.new(array.slice!(0..4))
+    while !user_questions.empty?
+      @quizzes << Quiz.new(user_questions.slice!(0..4))
     end
   end
 
@@ -60,12 +52,26 @@ class UserQuestionsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @to_remove.each do |item|
+      item.destroy
+    end
+    render :index
   end
 
   protected
   def user_question_params
     params.require(:user_question).permit(:correct?, :response, :user_id,
                                           :question_id,)
+  end
+
+  def completed_quiz_check
+    @user = current_user
+    user_questions = UserQuestion.where(user_id: @user.id).to_a
+    inc = user_questions.size % 5
+    if inc > 0
+      @to_remove = user_questions.reverse.take(inc)
+      redirect destroy
+    end
   end
 end

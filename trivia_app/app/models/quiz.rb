@@ -6,6 +6,10 @@ class Quiz
     @array = array
   end
 
+  def parse
+    
+  end
+
   def date_taken
     array[0].created_at.strftime("%D %H:%M")
   end
