@@ -4,26 +4,27 @@ require 'quiz.rb'
 
 class UserQuestionsController < ApplicationController
 
-  before_action :completed_quiz_check, only: [ :index, :destroy ]
+  before_action :completed_quiz_check, only: [ :index ]
 
   def index
-    user_questions = UserQuestion.where(user_id: @user.id).to_a
+    @user_questions = UserQuestion.where(user_id: @user.id).to_a
     @quizzes = []
-    while !user_questions.empty?
-      @quizzes << Quiz.new(user_questions.slice!(0..4))
+    while !@user_questions.empty?
+      @quizzes << Quiz.new(@user_questions.slice!(0..4))
     end
   end
 
   def new
       @user = current_user
+      user_questions = UserQuestion.where(user_id: @user.id)
+      total = UserQuestion.all.count
       @user_question = UserQuestion.new
 
-      # pick a random id from all ids in questions table
-      check_id = rand(1..Question.count)
-      while UserQuestion.where(user_id: check_id).exists?
-        check_id = rand(1..Question.count)
+      id = rand(1..total)
+      while user_questions.where(question_id: id).exists?
+        id = rand(1..all_questions.count)
       end
-      @question = Question.find(check_id)
+      @question = Question.find(id: id)
 
       session[:q] = @question.id
       @answers = @question.answers
@@ -52,12 +53,6 @@ class UserQuestionsController < ApplicationController
     end
   end
 
-  def destroy
-    @to_remove.each do |item|
-      item.destroy
-    end
-    render :index
-  end
 
   protected
   def user_question_params
@@ -68,10 +63,12 @@ class UserQuestionsController < ApplicationController
   def completed_quiz_check
     @user = current_user
     user_questions = UserQuestion.where(user_id: @user.id).to_a
-    inc = user_questions.size % 5
-    if inc > 0
-      @to_remove = user_questions.reverse.take(inc)
-      redirect destroy
+    incomplete = user_questions.size % 5
+    if incomplete > 0
+      to_remove = user_questions.reverse.take(incomplete  )
+      to_remove.each do |question|
+        question.delete
+      end
     end
   end
 end
