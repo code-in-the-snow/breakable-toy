@@ -16,16 +16,15 @@ class UserQuestionsController < ApplicationController
 
   def new
       @user = current_user
-      user_questions = UserQuestion.where(user_id: @user.id)
-      total = UserQuestion.all.count
       @user_question = UserQuestion.new
 
-      id = rand(1..total)
-      while user_questions.where(question_id: id).exists?
-        id = rand(1..all_questions.count)
+      random_id = rand(Question.count)
+      while UserQuestion.where(user_id: @user.id, question_id: random_id).exists?
+        puts random_id
+        random_id = rand(Question.count)
       end
-      @question = Question.find(id: id)
 
+      @question = Question.find(random_id)
       session[:q] = @question.id
       @answers = @question.answers
       @user_question.response = params[:response]
