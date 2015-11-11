@@ -1,6 +1,6 @@
 require 'byebug'
 require 'question_grader'
-require 'quiz.rb'
+require 'quiz'
 
 class UserQuestionsController < ApplicationController
 
@@ -18,8 +18,10 @@ class UserQuestionsController < ApplicationController
       @user = current_user
       @user_question = UserQuestion.new
 
-      random_id = rand(Question.count)
-      while UserQuestion.where(user_id: @user.id, question_id: random_id).exists?
+      random_id = rand(1..Question.count)
+      while UserQuestion.where(user_id: @user.id,
+                               question_id: random_id,
+                               "correct?": true).exists?
         puts random_id
         random_id = rand(Question.count)
       end
