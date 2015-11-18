@@ -66,7 +66,7 @@ class UserQuestionsController < ApplicationController
     user_questions = UserQuestion.where(user_id: @user.id).to_a
     incomplete = user_questions.size % 5
     if incomplete > 0
-      to_remove = user_questions.reverse.take(incomplete  )
+      to_remove = user_questions.reverse.take(incomplete)
       to_remove.each do |question|
         question.delete
       end
